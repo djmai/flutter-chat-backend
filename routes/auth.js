@@ -14,13 +14,15 @@ const router = Router();
 router.post('/new', [
   check('nombre', 'El nombre es obligatorio').not().trim().escape().isEmpty(),
   check('email', 'El email es obligatorio').not().trim().escape().isEmpty().isEmail().normalizeEmail(),
-  check('password', 'El password es obligatorio').not().trim().escape().isEmpty().isLength({ min: 8 }).withMessage('Debe tener al menos 8 caracteres de longitud'),
+  check('password', 'El password es obligatorio').not().trim().escape().isEmpty(),
+  // check('password', 'El password es obligatorio').not().trim().escape().isEmpty().isLength({ min: 8 }).withMessage('Debe tener al menos 8 caracteres de longitud'),
   validarCampos
 ], crearUsuario);
 
 router.post('/', [
   check('email', 'El email es obligatorio').not().trim().escape().isEmpty().isEmail().normalizeEmail(),
-  check('password', 'El password es obligatorio').not().trim().escape().isEmpty().isLength({ min: 8 }).withMessage('Debe tener al menos 8 caracteres de longitud'),
+  // check('password', 'El password es obligatorio').not().trim().escape().isEmpty().isLength({ min: 8 }).withMessage('Debe tener al menos 8 caracteres de longitud'),
+  check('password', 'El password es obligatorio').not().trim().escape().isEmpty(),
   validarCampos
 ], login);
 
